@@ -15,8 +15,8 @@ router.post(
     isAdmin,
     async (req, res, next) => {
         try {
-            const product = await EventsModel.create(req.body);
-            return res.status(201).json(product);
+            const event = await EventsModel.create(req.body);
+            return res.status(201).json(event);
         } catch (err) {
             return next(err);
         }
@@ -81,7 +81,7 @@ router.delete(
     isAdmin,
     async (req, res, next) => {
         try {
-            const event = await ProductModel.findOne({ _id: req.params.id });
+            const event = await EventsModel.findOne({ _id: req.params.id });
             if (!event) {
                 return res.status(404).json({ msg: 'Evento não localizado' });
             }
